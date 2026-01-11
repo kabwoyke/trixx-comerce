@@ -1,6 +1,6 @@
 {
-  "id": "cd68104a-d06a-4c7b-b620-e0bcf8da8fa9",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "81e6863a-72d2-40a6-ae01-297c29dcdb71",
+  "prevId": "cd68104a-d06a-4c7b-b620-e0bcf8da8fa9",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -21,8 +21,8 @@
           "primaryKey": false,
           "notNull": true
         },
-        "parent_category_id": {
-          "name": "parent_category_id",
+        "parent_id": {
+          "name": "parent_id",
           "type": "uuid",
           "primaryKey": false,
           "notNull": false
@@ -30,12 +30,12 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "categories_parent_category_id_categories_id_fk": {
-          "name": "categories_parent_category_id_categories_id_fk",
+        "categories_parent_id_categories_id_fk": {
+          "name": "categories_parent_id_categories_id_fk",
           "tableFrom": "categories",
           "tableTo": "categories",
           "columnsFrom": [
-            "parent_category_id"
+            "parent_id"
           ],
           "columnsTo": [
             "id"
