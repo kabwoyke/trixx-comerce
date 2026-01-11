@@ -1,0 +1,4 @@
+import jwt from "jsonwebtoken"
+
+
+console.log(jwt.verify("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJib3lAZ21haWwuY29tIiwiaWF0IjoxNzY4MTE0MDgyLCJleHAiOjE3NjgxMTQzODJ9.Wd6zS3TIIuzjKIeEAXrMJG9KfPmFZ9zbYeo9rDBODms" , "kaboi"))

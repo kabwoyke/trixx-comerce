@@ -1,45 +1,35 @@
 {
-  "id": "da64afc0-1e54-499b-bce2-c13fccf2fc0b",
+  "id": "a6c3b7e0-45d2-4a6f-998c-1e396b1cf92f",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.exa": {
-      "name": "exa",
+    "public.users": {
+      "name": "users",
       "schema": "",
       "columns": {
         "id": {
           "name": "id",
-          "type": "integer",
+          "type": "uuid",
           "primaryKey": true,
           "notNull": true,
-          "identity": {
-            "type": "always",
-            "name": "exa_id_seq",
-            "schema": "public",
-            "increment": "1",
-            "startWith": "1",
-            "minValue": "1",
-            "maxValue": "2147483647",
-            "cache": "1",
-            "cycle": false
-          }
-        },
-        "name": {
-          "name": "name",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "age": {
-          "name": "age",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
+          "default": "gen_random_uuid()"
         },
         "email": {
           "name": "email",
-          "type": "varchar",
+          "type": "varchar(400)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "password": {
+          "name": "password",
+          "type": "varchar(400)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "phone_number": {
+          "name": "phone_number",
+          "type": "varchar(400)",
           "primaryKey": false,
           "notNull": true
         }
@@ -48,8 +38,8 @@
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "exa_email_unique": {
-          "name": "exa_email_unique",
+        "users_email_unique": {
+          "name": "users_email_unique",
           "nullsNotDistinct": false,
           "columns": [
             "email"

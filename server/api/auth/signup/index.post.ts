@@ -1,4 +1,8 @@
+import { eq } from "drizzle-orm"
 import { z } from "zod"
+import {db} from "~~/server/db/config"
+import { usersTable } from "~~/server/db/schema"
+import bcrypt from "bcryptjs"
 type AuthBody = {
     email:string
     password:string
@@ -34,8 +38,23 @@ export default defineEventHandler(async(e)=>{
         })
     }
 
-    
+    const user = await db.select().from(usersTable).where(eq(usersTable.email , parsedBody.data.email))
+
+    if(user.length > 0){
+        return {
+            success:false,
+            message:"Email already exists!!",
+            status:400
+        }
+    }
+
+    const hashedPassword = await bcrypt.hash(parsedBody.data.password , 12)
+    const email = parsedBody.data.email
+    const phone_number = parsedBody.data.phone_number
+
+    const insert = await db.insert(usersTable).values({password:hashedPassword , email , phone_number}).returning()
+
     return {
-        parsedBody
+        insert
     }
 })
