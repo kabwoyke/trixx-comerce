@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { AnyPgColumn, decimal, integer, pgTable, text, uuid, varchar } from "drizzle-orm/pg-core";
+import { AnyPgColumn, decimal, integer, pgTable, real, text, uuid, varchar } from "drizzle-orm/pg-core";
 export const usersTable = pgTable("users", {
   id: uuid("id").primaryKey().defaultRandom(),
   email: varchar({length:400}).notNull().unique(),
@@ -19,8 +19,8 @@ export const products = pgTable("products" , {
   id:uuid("id").primaryKey().defaultRandom(),
   name:varchar("name", {length:255}).notNull(),
   description:text("description"),
-  price:decimal("price").notNull(),
-  discount_price:decimal("discount_price"),
+  price:real("price").notNull(),
+  discount_price:real("discount_price"),
   quantity:integer('quantity').notNull(),
   image:text("image")
 
