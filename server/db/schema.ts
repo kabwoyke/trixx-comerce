@@ -1,5 +1,5 @@
-import { sql } from "drizzle-orm";
-import { AnyPgColumn, decimal, integer, pgTable, real, text, uuid, varchar } from "drizzle-orm/pg-core";
+import { sql , relations } from "drizzle-orm";
+import { AnyPgColumn, decimal, integer, pgTable, real, text, uuid, varchar , primaryKey } from "drizzle-orm/pg-core";
 export const usersTable = pgTable("users", {
   id: uuid("id").primaryKey().defaultRandom(),
   email: varchar({length:400}).notNull().unique(),
@@ -25,3 +25,29 @@ export const products = pgTable("products" , {
   image:text("image")
 
 })
+
+export const productCategories = pgTable("product_categories" , {
+
+  productId:uuid("product_id").references(() => products.id).notNull(),
+  categoryId:uuid("category_id").references(() => categories.id)
+
+}, (t) => [primaryKey({columns:[t.productId , t.categoryId]})])
+
+export const productRelations = relations(products , ({many})=>({
+  categories:many(productCategories)
+}))
+
+export const categoryRelations = relations(categories , ({many})=>({
+  products:many(productCategories)
+}))
+
+export const productCategoryRelations = relations(productCategories , ({one}) => ({
+  products:one(products , {
+    fields:[productCategories.productId],
+    references:[products.id]
+  }),
+  categories:one(categories , {
+    fields:[productCategories.categoryId],
+    references:[categories.id]
+  })
+}))

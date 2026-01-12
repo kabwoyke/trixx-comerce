@@ -25,12 +25,11 @@ export default defineEventHandler(async (e) => {
     const parsedBody = ProductSchema.safeParse(body);
 
     if (!parsedBody.success) {
-      return {
-        success: false,
-        message: "Validation failed",
-        errors: parsedBody.error.flatten(),
-        statusCode: 422,
-      };
+      throw createError({
+        statusCode: 400,
+        statusMessage: "Validation failed",
+        data: parsedBody.error.message,
+      });
     }
     const { name , description , image , price , discount_price , quantity } = parsedBody.data;
 

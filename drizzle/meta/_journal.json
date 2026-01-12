@@ -57,6 +57,13 @@
       "when": 1768231408880,
       "tag": "0007_happy_patriot",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1768240427046,
+      "tag": "0008_yellow_vulcan",
+      "breakpoints": true
     }
   ]
 }
