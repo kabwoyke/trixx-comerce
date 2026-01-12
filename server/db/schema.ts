@@ -10,6 +10,7 @@ export const usersTable = pgTable("users", {
 export const categories = pgTable("categories" , {
   id:uuid("id").primaryKey().defaultRandom(),
   name:varchar("name", {length:255}).notNull(),
-  parent_id:uuid("parent_id").references(():any => categories.id , {onDelete:"set null"})
+  parent_id:uuid("parent_id").references(():any => categories.id , {onDelete:"set null"}),
+  image:varchar("image" , {length:1000})
 
 })

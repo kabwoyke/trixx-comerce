@@ -1,6 +1,6 @@
 <template>
     <NavBar/>
-<div class="bg-gray-50 min-h-screen flex items-center justify-center py-12 px-4">
+<div class="bg-gray-50 dark:bg-transparent min-h-screen flex items-center justify-center py-12 px-4">
   <div class="max-w-2xl w-full bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
     
     <div class="bg-blue-600 p-8 text-center text-white">

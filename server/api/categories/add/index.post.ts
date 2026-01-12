@@ -5,6 +5,7 @@ import { categories } from "~~/server/db/schema";
 const CategorySchema = z.object({
   name: z.string(),
   parent_id: z.string().nullable().default(null),
+  image:z.string().nullable()
 });
 
 export default defineEventHandler(async (e) => {
@@ -32,12 +33,14 @@ export default defineEventHandler(async (e) => {
 
     const name = parsedBody.data.name;
     const parent_id = parsedBody.data.parent_id;
+    const image = parsedBody.data.image
 
     const dbres = await db
       .insert(categories)
       .values({
         name,
         parent_id,
+        image
       })
       .returning();
 
