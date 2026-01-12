@@ -1,7 +1,7 @@
 <template>
-
-       <NavBar />
-    <div class="bg-gray-50 dark:bg-transparent px-16 py-8">
+    <NavBar />
+    <div class="bg-base-100 px-16 py-8">
+        <!-- Carousel Section -->
         <div class="carousel w-full mt-4 h-72">
             <div id="slide1" class="carousel-item relative w-full">
                 <img src="/happy1.jpg" class="w-full h-full object-cover" />
@@ -33,15 +33,16 @@
             </div>
         </div>
 
+        <!-- Shop by Category Section -->
         <section class="max-w-full px-4 py-12">
             <div class="mb-8 text-center md:text-left">
-                <h2 class="text-3xl font-bold text-gray-900 dark:text-white tracking-tight">Shop by Category</h2>
-                <p class="mt-2 text-gray-600 dark:text-white">Discover our curated collections for every style.</p>
+                <h2 class="text-3xl font-bold text-base-content tracking-tight">Shop by Category</h2>
+                <p class="mt-2 text-base-content/70">Discover our curated collections for every style.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
-
-                <div class="md:col-span-3 relative group overflow-hidden bg-gray-100 rounded-xl h-80">
+                <!-- Men's Collection -->
+                <div class="md:col-span-3 relative group overflow-hidden bg-base-300 rounded-xl h-80">
                     <img src="https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?auto=format&fit=crop&q=80&w=800"
                         alt="Men's Fashion"
                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
@@ -54,7 +55,8 @@
                     </div>
                 </div>
 
-                <div class="md:col-span-3 relative group overflow-hidden bg-gray-100 rounded-xl h-80">
+                <!-- Women's Collection -->
+                <div class="md:col-span-3 relative group overflow-hidden bg-base-300 rounded-xl h-80">
                     <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=800"
                         alt="Women's Fashion"
                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
@@ -67,7 +69,8 @@
                     </div>
                 </div>
 
-                <div class="md:col-span-2 relative group overflow-hidden bg-gray-100 rounded-xl h-64">
+                <!-- Accessories -->
+                <div class="md:col-span-2 relative group overflow-hidden bg-base-300 rounded-xl h-64">
                     <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=600"
                         alt="Accessories"
                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
@@ -79,7 +82,8 @@
                     </div>
                 </div>
 
-                <div class="md:col-span-2 relative group overflow-hidden bg-gray-100 rounded-xl h-64">
+                <!-- Footwear -->
+                <div class="md:col-span-2 relative group overflow-hidden bg-base-300 rounded-xl h-64">
                     <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=600"
                         alt="Footwear"
                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
@@ -91,7 +95,8 @@
                     </div>
                 </div>
 
-                <div class="md:col-span-2 relative group overflow-hidden bg-gray-100 rounded-xl h-64">
+                <!-- Electronics -->
+                <div class="md:col-span-2 relative group overflow-hidden bg-base-300 rounded-xl h-64">
                     <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=600"
                         alt="Electronics"
                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
@@ -102,24 +107,32 @@
                             All</a>
                     </div>
                 </div>
-
             </div>
         </section>
 
-
+        <!-- Featured Products Section -->
         <section class="max-w-full px-4 py-12">
             <div>
-                <h2 class="text-2xl font-bold">Featured Products</h2>
+                <h2 class="text-2xl font-bold text-base-content">Featured Products</h2>
             </div>
 
-            <div class="mt-6 grid grid-cols-1  md:grid-cols-3 gap-4">
-                <FeaturedProducts title="Nike Sneakers" status="NEW" img="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"/>
-                 <FeaturedProducts title="Adidas One" img="https://m.media-amazon.com/images/I/61FbqzPD8TL._AC_UL1500_.jpg" />
-                  <FeaturedProducts title="Jordan" img="https://m.media-amazon.com/images/I/31kvRXaixML._AC_SY300_.jpg"/>
+            <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+                <FeaturedProducts 
+                    title="Nike Sneakers" 
+                    status="NEW" 
+                    img="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                />
+                <FeaturedProducts 
+                    title="Adidas One" 
+                    img="https://m.media-amazon.com/images/I/61FbqzPD8TL._AC_UL1500_.jpg" 
+                />
+                <FeaturedProducts 
+                    title="Jordan" 
+                    img="https://m.media-amazon.com/images/I/31kvRXaixML._AC_SY300_.jpg"
+                />
             </div>
         </section>
 
         <Footer/>
     </div>
-
 </template>
