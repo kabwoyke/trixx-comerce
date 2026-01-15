@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { db } from "~~/server/db/config";
-import { products } from "~~/server/db/schema";
+import { productCategories, products } from "~~/server/db/schema";
 const ProductSchema = z.object({
   name: z.string().min(1),
   description: z.string(),
@@ -8,6 +8,7 @@ const ProductSchema = z.object({
   quantity: z.number().nonnegative(),
   discount_price: z.number().nullable(),
   image: z.string(),
+  category_id:z.string()
 });
 
 export default defineEventHandler(async (e) => {
@@ -31,7 +32,7 @@ export default defineEventHandler(async (e) => {
         data: parsedBody.error.message,
       });
     }
-    const { name , description , image , price , discount_price , quantity } = parsedBody.data;
+    const { name , description , image , price , discount_price , quantity , category_id } = parsedBody.data;
 
     const dbres = await db.insert(products).values({
       name,
@@ -42,8 +43,14 @@ export default defineEventHandler(async (e) => {
       quantity
     }).returning();
 
+     const category_products = await db.insert(productCategories).values({
+      productId:dbres[0].id,
+      categoryId:category_id
+    }).returning()
+
     return {
-        dbres
+        dbres,
+        category_products
     }
   } catch (error) {
     console.error(error);
